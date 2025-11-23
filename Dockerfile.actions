@@ -1,0 +1,33 @@
+FROM rasa/rasa-sdk:3.6.0
+
+# Cambiar a root para instalar dependencias del sistema
+USER root
+
+# Instalar dependencias del sistema para PostgreSQL y spaCy
+RUN apt-get update && apt-get install -y \
+    gcc \
+    python3-dev \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Actualizar pip
+RUN pip install --no-cache-dir --upgrade pip
+
+# Instalar dependencias Python
+RUN pip install --no-cache-dir \
+    psycopg2-binary==2.9.6 \
+    sqlalchemy==1.4.46 \
+    spacy==3.7.3
+
+# Copiar las acciones
+COPY src/actions /app/actions
+COPY src/nlp /app/nlp
+
+# Establecer permisos
+RUN chmod -R 777 /app
+
+# Cambiar de vuelta al usuario no-root
+USER 1001
+
+# Comando por defecto
+CMD ["python", "-m", "rasa_sdk", "--actions", "actions"]

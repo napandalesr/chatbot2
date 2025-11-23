@@ -1,0 +1,14 @@
+{
+  "labels":[
+    "saludo",
+    "tecnologia_general",
+    "tecnologia_especifica",
+    "empresa_general",
+    "empresa_especifica",
+    "idioma_general",
+    "idioma_especifico",
+    "desconocido"
+  ],
+  "threshold":0.0,
+  "positive_label":null
+}

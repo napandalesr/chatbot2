@@ -1,0 +1,34 @@
+version: "3.1"
+
+rules:
+  - rule: Saludo
+    steps:
+      - intent: saludar
+      - action: action_saludar
+      - action: action_sugerir_tema
+
+  - rule: extender saludo
+    steps:
+      - intent: como_estas
+      - action: action_saludo_extendido
+      - action: action_sugerir_tema
+
+  - rule: continuar tema
+    steps:
+      - intent: afirmativo
+      - action: action_seguir_tema
+
+  - rule: despedir
+    steps:
+      - intent: despedir
+      - action: utter_despedir
+
+  - rule: agradecer
+    steps:
+      - intent: agradecer
+      - action: utter_agradecer
+
+  - rule: palabra suelta
+    steps:
+      - intent: palabra_suelta
+      - action: action_classify_spacy

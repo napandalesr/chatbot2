@@ -1,0 +1,49 @@
+version: "3.1"
+
+nlu:
+  - intent: preguntar_experiencia_general
+    examples: |
+      - Dame un resumen de toda tu experiencia
+      - Cuentame sobre tu experiencia laboral
+      - Cuéntame todos tus trabajos
+      - ¿Cuál es tu historial laboral completo?
+      - ¿Cuéntame sobre tu experiencia laboral?
+      - ¿Cuál es tu experiencia profesional?
+      - Háblame de tu trayectoria laboral
+      - ¿Dónde has trabajado?
+      - ¿Cuál es tu background profesional?
+      - ¿Qué experiencia tienes?
+      - ¿En qué empresas has trabajado?
+      - Cuéntame de tu carrera
+      - ¿Cuántos años de experiencia tienes?
+      - ¿Qué puestos has tenido?
+      - ¿Podrías contarme sobre tu experiencia laboral?
+      - ¿Cuál es tu historial laboral?
+      - ¿Dónde has desarrollado tu carrera?
+      - ¿En qué compañías has estado?
+      - ¿Cuánta experiencia profesional tienes?
+      - ¿Qué roles has desempeñado?
+      - Háblame de tu experiencia profesional
+      - ¿Cuál es tu recorrido profesional?
+      - ¿En qué lugares has trabajado?
+      - ¿Tienes mucha experiencia laboral?
+      - ¿Podrías resumir tu experiencia?
+
+# --- EXPERIENCIA POR EMPRESA ---
+  - intent: preguntar_experiencia_empresa_especifica
+    examples: |
+      - ¿Qué hiciste en [Indra](empresa)?
+      - Cuéntame de tu tiempo en [Praxis](empresa)
+      - ¿Cómo fue tu experiencia en [Ol Software](empresa)?
+      - ¿Qué proyectos hiciste en [Marabunta](empresa)?
+      - tu trabajo en [MG Group](empresa)
+      - experiencia laboral en [Indra](empresa)
+      - ¿Qué rol tuviste en [Praxis](empresa)?
+      - proyectos que desarrollaste en [Ol Software](empresa)
+      - ¿Cuánto tiempo estuviste en [Marabunta](empresa)?
+      - tus responsabilidades en [Indra](empresa)
+      - ¿Qué tecnologías usaste en [Praxis](empresa)?
+      - trabajo en [empresa freelance](empresa)
+      - experiencia en [Ol Software](empresa)
+      - ¿Qué aprendiste en [Marabunta](empresa)?
+      - tu cargo en [MG Group](empresa)

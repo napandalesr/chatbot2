@@ -1,0 +1,27 @@
+version: "3.1"
+
+nlu:
+  - intent: preguntar_idioma_general
+    examples: |
+      - ¿Qué idiomas manejas?
+      - ¿Eres bilingüe?
+      - ¿Cuáles idiomas hablas?
+      - ¿Qué lenguajes conoces?
+      - ¿Hablas otros idiomas?
+      - ¿Cuántos idiomas sabes?
+      - ¿Qué idiomas dominas?
+      - ¿Manejas varios idiomas?
+      - ¿Eres políglota?
+
+  - intent: preguntar_idioma_especifico
+    examples: |
+      - ¿Sabes [inglés](idioma)?
+      - ¿Hablas [inglés](idioma)?
+      - ¿Manejas [inglés](idioma)?
+      - ¿Conoces [inglés](idioma)?
+      - ¿Dominas [inglés](idioma)?
+      - ¿Tienes [inglés](idioma)?
+      - sabes [inglés](idioma)?
+      - hablas [inglés](idioma)?
+      - manejas [inglés](idioma)?
+      - conoces [inglés](idioma)?

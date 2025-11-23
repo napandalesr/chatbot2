@@ -1,0 +1,82 @@
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+  - saludar
+  - como_estas
+  - educacion
+
+entities:
+  - tecnologia
+  - empresa
+  - idioma
+
+slots:
+  tema_sugerido:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+  tecnologia:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: tecnologia
+  empresa:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: empresa
+  idioma:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: idioma
+  institucion:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: institucion
+
+actions:
+  # General Actions
+  - action_saludar
+  - action_saludo_extendido
+  - action_sugerir_tema
+  - action_seguir_tema
+  - action_perfil_general
+  - action_experiencia_general
+  - action_experiencia_especifica
+  - action_tecnologia_especifica
+  - action_tecnologia_general
+  - action_classify_spacy
+  - action_idioma_general
+  - action_idioma_especifico
+  - action_educacion_general
+  - action_educacion_especifica
+
+responses:
+  utter_despedir:
+    - text: "Fue un gusto saludarte. Espero verte pronto para compartir más sobre mi experiencia profesional."
+    - text: "Que tengas un excelente día. Cuando quieras conocer mi perfil, estaré aquí."
+    - text: "Nos vemos. Recuerda que puedo contarte sobre mi trayectoria cuando lo necesites."
+    - text: "¡Hasta la próxima! 🚀"
+    - text: "¡Cuídate mucho! 🌟"
+    - text: "¡Que todo te vaya bien! ✨"
+
+  utter_agradecer:
+    - text: "¡De nada! 😊 Fue un gusto ayudarte."
+    - text: "¡No hay de qué! 🌟 Me alegra poder ser de ayuda."
+    - text: "¡Con mucho gusto! 💫 Estoy aquí para lo que necesites."
+    - text: "¡Es un placer! 🚀 Me da gusto poder asistirte."
+    - text: "¿Hay algo más en lo que te pueda ayudar?"
+    - text: "¿Te gustaría conocer algún otro aspecto de mi perfil profesional?"
+    - text: "¿En qué más puedo colaborarte?"
+    - text: "¿Quieres que profundicemos en algún tema específico?"

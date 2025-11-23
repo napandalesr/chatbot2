@@ -1,0 +1,12 @@
+version: "3.1"
+
+rules:
+  - rule: Preguntar idioma general
+    steps:
+      - intent: preguntar_idioma_general
+      - action: action_idioma_general
+
+  - rule: Preguntar idioma especifico
+    steps:
+    - intent: preguntar_idioma_especifico
+    - action: action_idioma_especifico

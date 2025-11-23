@@ -1,0 +1,153 @@
+version: "3.1"
+
+nlu:
+# --- SALUDOS ---
+  - intent: saludar
+    examples: |
+      - hola
+      - holi
+      - buenos días
+      - buenas tardes
+      - buenas noches
+      - qué tal
+      - qué hubo
+      - ey
+      - hi
+      - hello
+      - saludos
+      - buenas
+      - qué más
+      - qué onda
+      - un gusto
+      - encantado de conocerte
+      - buen día
+      - hey
+      - oye
+      - un saludo
+      - qué pasa
+      - alegría de verte
+      - buenas a todos
+      - cómo te va
+      - qué tal todo
+      - saludos cordiales
+      - un placer
+      - gusto en saludarte
+  
+  - intent: como_estas
+    examples: |
+      - ¿Cómo estás?
+      - Como estas?
+      - ¿Qué tal estás?
+      - ¿Cómo te encuentras?
+      - ¿Qué tal te sientes?
+      - ¿Cómo andas?
+
+
+  - intent: afirmativo
+    examples: |
+      - sí
+      - si
+      - claro
+      - por supuesto
+      - de acuerdo
+      - ok
+      - adelante
+      - continúa
+      - si quiero
+      - sí, por favor
+      - correcto
+      - afirmativo
+      - seguro
+      - va
+      - dale
+      - por favor
+      - cuéntame más
+      - claro que sí
+      - me interesa
+      - así es
+      - exacto
+      - procede
+      - bueno
+      - está bien
+
+  - intent: palabra_suelta
+    examples: |
+      - react
+      - typescript
+      - node.js
+      - docker
+      - postgresql
+      - next.js
+      - nestjs
+      - react native
+      - tailwind
+      - jest
+      - freelance
+      - mg group
+      - praxis
+      - indra
+      - marabunta
+      - ol software
+      - node
+      - postgres
+      - next
+      - nest
+
+# --- DESPEDIDAS ---
+  - intent: despedir
+    examples: |
+      - adiós
+      - hasta luego
+      - nos vemos
+      - chao
+      - bye
+      - goodbye
+      - hasta pronto
+      - hasta la vista
+      - me voy
+      - tengo que irme
+      - hasta mañana
+      - cuídate
+      - que te vaya bien
+      - hasta la próxima
+      - hasta después
+      - pura vida
+      - saludos a todos
+      - hasta pronto
+      - nos vemos luego
+      - fue un gusto
+      - chao chao
+      - hasta la próxima vez
+      - que tengas buen día
+      - hasta más ver
+      - adiós por ahora
+      - me retiro
+      - hasta un próximo contacto
+
+# --- AGRADECIMIENTOS ---
+  - intent: agradecer
+    examples: |
+      - gracias
+      - gracias por tu ayuda
+      - te lo agradezco
+      - merci
+      - thank you
+      - thanks
+      - perfecto, gracias
+      - excelente, gracias
+      - muy amable
+      - mil gracias
+      - gracias por la información
+      - te agradezco mucho
+      - gracias por tu tiempo
+      - awesome, thanks
+      - appreciate it
+      - gracias por la ayuda
+      - valiosa información, gracias
+      - perfect, thank you
+      - gracias por los detalles
+      - muy útil, gracias
+      - agradecido por la ayuda
+      - thanks a lot
+      - se agradece
+      - gracias por responder

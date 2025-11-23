@@ -1,0 +1,12 @@
+version: "3.1"
+
+rules:
+  - rule: Preguntar experiencia laboral general
+    steps:
+      - intent: preguntar_habilidad_tecnologia_general
+      - action: action_tecnologia_general
+
+  - rule: Habilidad en tecnología específica
+    steps:
+    - intent: preguntar_habilidad_tecnologia_especifica
+    - action: action_tecnologia_especifica

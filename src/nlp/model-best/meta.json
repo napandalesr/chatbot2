@@ -1,0 +1,40 @@
+{
+  "lang":"es",
+  "name":"pipeline",
+  "version":"0.0.0",
+  "spacy_version":">=3.7.3,<3.8.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_git_version":"e1249d372",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null,
+    "mode":"default"
+  },
+  "labels":{
+    "textcat":[
+      "saludo",
+      "tecnologia_general",
+      "tecnologia_especifica",
+      "empresa_general",
+      "empresa_especifica",
+      "idioma_general",
+      "idioma_especifico",
+      "desconocido"
+    ]
+  },
+  "pipeline":[
+    "textcat"
+  ],
+  "components":[
+    "textcat"
+  ],
+  "disabled":[
+
+  ]
+}

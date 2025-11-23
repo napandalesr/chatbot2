@@ -1,0 +1,57 @@
+version: "3.1"
+
+nlu:
+  - intent: preguntar_habilidad_tecnologia_general
+    examples: |
+      - ¿Qué tecnologías manejas?
+      - ¿Qué tecnologías conoces?
+      - ¿Con qué herramientas o lenguajes trabajas?
+      - ¿Qué tipo de tecnología usas para funcionar?
+      - ¿En qué plataformas estás desarrollado?
+      - ¿Qué software o sistemas manejas?
+      - ¿Qué herramientas tecnológicas dominas?
+      - ¿Que lenguajes de programación manejas?
+      - ¿Cuál es tu stack tecnológico?
+      - ¿Qué tecnologías tienes en tu arsenal?
+      - ¿Qué herramientas usas?
+      - ¿Qué lenguajes programas?
+      - ¿Qué tecnologías dominas?
+      - ¿Qué sabes hacer técnicamente?
+      - ¿Cuáles son tus habilidades técnicas?
+      - ¿Qué herramientas manejas?
+      - ¿Qué tecnologías conoces?
+      - ¿Qué skills técnicos tienes?
+      - ¿Qué puedes desarrollar?
+      - ¿En qué tecnologías tienes experiencia?
+      - ¿Qué herramientas técnicas usas?
+
+# --- TECNOLOGÍAS ESPECÍFICAS ---
+  - intent: preguntar_habilidad_tecnologia_especifica
+    examples: |
+      - ¿Sabes usar [React](tecnologia)?
+      - ¿Manejas [TypeScript](tecnologia)?
+      - ¿Conoces [Docker](tecnologia)?
+      - ¿Dominas [Node.js](tecnologia)?
+      - ¿Tienes conocimientos de [PostgreSQL](tecnologia)?
+      - ¿Estás familiarizado con [Next.js](tecnologia)?
+      - ¿Tienes skills en [NestJS](tecnologia)?
+      - sabes [react](tecnologia)?
+      - conoces [docker](tecnologia)?
+      - manejas [typescript](tecnologia)?
+      - ¿y [node.js](tecnologia) lo sabes?
+      - ¿Qué sabes de [React Native](tecnologia)?
+      - ¿Manejas [Tailwind](tecnologia)?
+      - ¿Conoces [Jest](tecnologia)?
+      - ¿Dominas [GraphQL](tecnologia)?
+      - ¿Tienes experiencia con [Spring Boot](tecnologia)?
+      - ¿Sabes usar [Azure DevOps](tecnologia)?
+      - ¿Manejas [MongoDB](tecnologia)?
+      - ¿Conoces [Express](tecnologia)?
+      - ¿Tienes skills en [Sass](tecnologia)?
+      - ¿Dominas [Ant Design](tecnologia)?
+      - ¿Sabes [Strapi](tecnologia)?
+      - ¿Manejas [Webpack](tecnologia)?
+      - ¿Conoces [jQuery](tecnologia)?
+      - ¿Tienes experiencia con [.NET](tecnologia)?
+      - ¿Sabes [Java](tecnologia)?
+      - ¿Manejas [Python](tecnologia)?

@@ -1,0 +1,59 @@
+version: "3.1"
+
+stories:
+  - story: Flujo conversacional
+    steps:
+    - intent: saludar
+    - action: action_saludar
+    - action: action_sugerir_tema
+    - intent: como_estas
+    - action: action_saludo_extendido
+    - action: action_sugerir_tema
+    - intent: afirmativo
+    - action: action_seguir_tema
+
+  - story: Flujo conversacional 2
+    steps:
+    - intent: saludar
+    - action: action_saludar
+    - action: action_sugerir_tema
+    - intent: afirmativo
+    - action: action_seguir_tema
+    - intent: preguntar_experiencia_empresa_especifica
+      entities:
+      - empresa: "indra"
+    - action: action_experiencia_especifica
+    - intent: preguntar_habilidad_tecnologia_especifica
+      entities:
+      - tecnologia: "react"
+    - action: action_tecnologia_especifica
+    - intent: despedir
+    - action: utter_despedir
+
+  - story: Preguntar nivel de ingles
+    steps:
+    - intent: saludar
+    - action: action_saludar
+    - action: action_sugerir_tema
+    - intent: afirmativo
+    - action: action_seguir_tema
+    - intent: preguntar_idioma_general
+    - action: action_idioma_general
+    - intent: preguntar_idioma_especifico
+    - action: action_idioma_especifico
+    - intent: despedir
+    - action: utter_despedir
+
+  - story: Preguntar Educacion
+    steps:
+    - intent: saludar
+    - action: action_saludar
+    - action: action_sugerir_tema
+    - intent: preguntar_educacion_general
+    - action: action_educacion_general
+    - intent: preguntar_educacion_especifica
+    - action: action_educacion_especifica
+    - intent: agradecer
+    - action: utter_agradecer
+    - intent: despedir
+    - action: utter_despedir

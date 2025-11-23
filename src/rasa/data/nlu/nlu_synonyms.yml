@@ -1,0 +1,442 @@
+version: "3.1"
+
+nlu:
+
+# --- TECNOLOGÍAS FRONTEND ---
+  - synonym: react
+    examples: |
+      - React
+      - React.js
+      - ReactJS
+      - React js
+      - react
+      - REACT
+      - reactjs
+
+  - synonym: next.js
+    examples: |
+      - Next.js
+      - Next
+      - NextJS
+      - Next js
+      - nextjs
+      - next.js
+      - next
+
+  - synonym: typescript
+    examples: |
+      - TypeScript
+      - TS
+      - Typescript
+      - typescript
+      - TYPESCRIPT
+
+  - synonym: javascript
+    examples: |
+      - JavaScript
+      - JS
+      - Javascript
+      - javascript
+      - JAVASCRIPT
+
+  - synonym: tailwind
+    examples: |
+      - Tailwind
+      - Tailwind CSS
+      - TailwindCSS
+      - tailwind
+      - TAILWIND
+
+  - synonym: sass
+    examples: |
+      - Sass
+      - SASS
+      - SCSS
+      - sass
+      - Scss
+
+  - synonym: ant design
+    examples: |
+      - Ant Design
+      - Ant Design
+      - antd
+      - Ant Design
+      - ant design
+
+  - synonym: react native
+    examples: |
+      - React Native
+      - React-Native
+      - React native
+      - react native
+      - ReactNative
+      - reactnative
+
+  - synonym: angular
+    examples: |
+      - Angular
+      - Angular.js
+      - AngularJS
+      - angular
+      - ANGULAR
+
+  - synonym: vue
+    examples: |
+      - Vue
+      - Vue.js
+      - VueJS
+      - vue
+      - VUE
+
+  - synonym: jquery
+    examples: |
+      - jQuery
+      - JQuery
+      - jquery
+      - JQUERY
+
+# --- TECNOLOGÍAS BACKEND ---
+  - synonym: node.js
+    examples: |
+      - Node.js
+      - Node
+      - NodeJS
+      - Node js
+      - node
+      - NODE
+      - nodejs
+
+
+  - synonym: nestjs
+    examples: |
+      - NestJS
+      - Nest
+      - Nest JS
+      - nestjs
+      - nest
+      - NEST
+
+  - synonym: express
+    examples: |
+      - Express
+      - Express.js
+      - ExpressJS
+      - express
+      - EXPRESS
+
+  - synonym: spring boot
+    examples: |
+      - Spring Boot
+      - Spring
+      - Spring boot
+      - spring boot
+      - SPRING
+
+  - synonym: .net
+    examples: |
+      - .NET
+      - DotNet
+      - dotnet
+      - .Net
+      - NET
+
+  - synonym: java
+    examples: |
+      - Java
+      - java
+      - JAVA
+
+  - synonym: python
+    examples: |
+      - Python
+      - python
+      - PYTHON
+
+# --- BASES DE DATOS ---
+  - synonym: postgresql
+    examples: |
+      - PostgreSQL
+      - Postgres
+      - postgresql
+      - postgres
+      - POSTGRES
+
+  - synonym: mysql
+    examples: |
+      - MySQL
+      - Mysql
+      - mysql
+      - MYSQL
+
+  - synonym: oracle
+    examples: |
+      - Oracle
+      - oracle
+      - ORACLE
+
+  - synonym: mongodb
+    examples: |
+      - MongoDB
+      - Mongo
+      - mongodb
+      - MONGODB
+
+  - synonym: firebase
+    examples: |
+      - Firebase
+      - Firestore
+      - firebase
+      - FIREBASE
+
+# --- HERRAMIENTAS & DEVOPS ---
+  - synonym: docker
+    examples: |
+      - Docker
+      - docker
+      - DOCKER
+
+  - synonym: graphql
+    examples: |
+      - GraphQL
+      - Graphql
+      - graphql
+      - GRAPHQL
+
+  - synonym: jest
+    examples: |
+      - Jest
+      - jest
+      - JEST
+
+  - synonym: azure devops
+    examples: |
+      - Azure DevOps
+      - Azure
+      - DevOps
+      - azure devops
+      - AZURE
+      - azuredevops
+
+  - synonym: vtex
+    examples: |
+      - VTEX
+      - Vtex
+      - vtex
+      - VTEX Legacy
+
+  - synonym: strapi
+    examples: |
+      - Strapi
+      - strapi
+      - STRAPI
+
+  - synonym: webpack
+    examples: |
+      - Webpack
+      - webpack
+      - WEBPACK
+
+  - synonym: gulp
+    examples: |
+      - Gulp
+      - gulp
+      - GULP
+
+  - synonym: ubuntu server
+    examples: |
+      - Ubuntu Server
+      - Ubuntu
+      - ubuntu server
+      - UBUNTU
+      - ubuntuserver
+
+# --- EMPRESAS ---
+  - synonym: indra
+    examples: |
+      - Indra
+      - INDRA
+      - Indra S.A.
+      - indra
+
+  - synonym: praxis
+    examples: |
+      - Praxis
+      - PRAXIS
+      - praxis
+
+  - synonym: ol software
+    examples: |
+      - Ol Software
+      - OL Software
+      - OlSoftware
+      - ol software
+      - OL
+      - ol
+
+  - synonym: marabunta
+    examples: |
+      - Marabunta
+      - marabunta
+      - MARABUNTA
+
+  - synonym: mg group
+    examples: |
+      - Mg Group
+      - MG Group
+      - MG-Group
+      - mg group
+      - MG
+      - mg
+
+  - synonym: freelance
+    examples: |
+      - Freelance
+      - freelance
+      - FREELANCE
+      - Independiente
+      - Trabajo independiente
+
+# --- ROLES & CARGOS ---
+  - synonym: ingeniero de software
+    examples: |
+      - Ingeniero de Software
+      - Software Engineer
+      - Ingeniero software
+      - Desarrollador senior
+      - Senior Software Engineer
+
+  - synonym: desarrollador full stack
+    examples: |
+      - Full Stack
+      - Full-Stack
+      - Full Stack Developer
+      - Desarrollador Full Stack
+      - Fullstack
+
+  - synonym: desarrollador frontend
+    examples: |
+      - Frontend
+      - Front-end
+      - Frontend Developer
+      - Desarrollador Frontend
+      - Front end
+
+  - synonym: desarrollador backend
+    examples: |
+      - Backend
+      - Back-end
+      - Backend Developer
+      - Desarrollador Backend
+      - Back end
+
+  - synonym: lider tecnico
+    examples: |
+      - Líder Técnico
+      - Tech Lead
+      - Technical Lead
+      - Liderazgo técnico
+
+# --- INDUSTRIAS & SECTORES ---
+  - synonym: ecommerce
+    examples: |
+      - Ecommerce
+      - E-commerce
+      - ecommerce
+      - Comercio electrónico
+
+  - synonym: energia
+    examples: |
+      - Energía
+      - Energy
+      - Sector energético
+      - energía
+
+  - synonym: agricultura
+    examples: |
+      - Agricultura
+      - Agro
+      - Sector agrícola
+      - agricultura
+
+  - synonym: educacion
+    examples: |
+      - Educación
+      - Education
+      - Sector educativo
+      - educación
+
+  - synonym: publicidad
+    examples: |
+      - Publicidad
+      - Advertising
+      - Marketing
+      - publicidad
+
+  - synonym: tecnologia
+    examples: |
+      - Tecnología
+      - Tech
+      - Sector tecnológico
+      - tecnología
+
+# --- HABILIDADES BLANDAS ---
+  - synonym: liderazgo
+    examples: |
+      - Liderazgo
+      - Leadership
+      - Liderar
+      - liderazgo
+
+  - synonym: comunicacion
+    examples: |
+      - Comunicación
+      - Communication
+      - Comunicar
+      - comunicación
+
+  - synonym: adaptabilidad
+    examples: |
+      - Adaptabilidad
+      - Adaptación
+      - Flexible
+      - adaptabilidad
+
+  - synonym: resolucion problemas
+    examples: |
+      - Resolución de problemas
+      - Problem solving
+      - Solución de problemas
+      - resolver problemas
+
+  - synonym: inglés
+    examples: |
+      - Inglés
+      - English
+      - ingles
+      - INGLÉS
+      - inglés
+      - ingles
+
+  - synonym: español
+    examples: |
+      - Español
+      - Spanish
+      - español
+      - ESPAÑOL
+      - Castellano
+      - castellano
+      - CASTELLANO
+
+  - synonym: portugués
+    examples: |
+      - Portugués
+      - Portuguese
+      - portugues
+      - PORTUGUÉS
+
+  - synonym: Universidad del Pacífico
+    examples: |
+      - Universidad del Pacífico
+      - Universidad del Pacifico
+      - universidad del pacífico
+      - UNIPACÍFICO

@@ -1,0 +1,34 @@
+{"text": "hola", "labels": ["saludo"]}
+{"text": "buenos días", "labels": ["saludo"]}
+{"text": "qué tal", "labels": ["saludo"]}
+{"text": "Tus chambas", "labels": ["tecnologia_general"]}
+{"text": "trabajo en tecnología", "labels": ["tecnologia_general"]}
+{"text": "programación", "labels": ["tecnologia_general"]}
+{"text": "IT", "labels": ["tecnologia_general"]}
+{"text": "React", "labels": ["tecnologia_especifica"]}
+{"text": "Node.js", "labels": ["tecnologia_especifica"]}
+{"text": "Next.js", "labels": ["tecnologia_especifica"]}
+{"text": "NestJS", "labels": ["tecnologia_especifica"]}
+{"text": "React Native", "labels": ["tecnologia_especifica"]}
+{"text": "Docker", "labels": ["tecnologia_especifica"]}
+{"text": "PostgreSQL", "labels": ["tecnologia_especifica"]}
+{"text": "TypeScript", "labels": ["tecnologia_especifica"]}
+{"text": "Jest", "labels": ["tecnologia_especifica"]}
+{"text": "Tailwind CSS", "labels": ["tecnologia_especifica"]}
+{"text": "experiencia en empresas", "labels": ["empresa_general"]}
+{"text": "mis trabajos anteriores", "labels": ["empresa_general"]}
+{"text": "he trabajado en compañías grandes", "labels": ["empresa_general"]}
+{"text": "Freelance", "labels": ["empresa_especifica"]}
+{"text": "MG Group", "labels": ["empresa_especifica"]}
+{"text": "Praxis", "labels": ["empresa_especifica"]}
+{"text": "Indra", "labels": ["empresa_especifica"]}
+{"text": "Marabunta", "labels": ["empresa_especifica"]}
+{"text": "Ol Software", "labels": ["empresa_especifica"]}
+{"text": "idiomas", "labels": ["idioma_general"]}
+{"text": "lenguajes que hablo", "labels": ["idioma_general"]}
+{"text": "Inglés", "labels": ["idioma_especifico"]}
+{"text": "Español", "labels": ["idioma_especifico"]}
+{"text": "no entiendo", "labels": ["desconocido"]}
+{"text": "qué es eso", "labels": ["desconocido"]}
+{"text": "chamo", "labels": ["desconocido"]}
+{"text": "chambas", "labels": ["desconocido"]}

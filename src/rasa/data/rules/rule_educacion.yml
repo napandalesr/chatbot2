@@ -1,0 +1,12 @@
+version: "3.1"
+
+rules:
+  - rule: Preguntar educacion general
+    steps:
+    - intent: preguntar_educacion_general
+    - action: action_educacion_general
+
+  - rule: Preguntar educacion especifica
+    steps:
+    - intent: preguntar_educacion_especifica
+    - action: action_educacion_especifica

@@ -1,0 +1,24 @@
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
+import os
+
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
+
+DATABASE_URL = f"postgresql+asyncpg://{POSTGRES_USER}:{POSTGRES_PASSWORD}@postgres:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+engine = create_async_engine(DATABASE_URL, echo=True)
+
+SessionLocal = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+
+Base = declarative_base()
+
+
+async def init_models():
+  from domain.entities.user import UserEntity
+  from domain.entities.message import MessageEntity
+
+  async with engine.begin() as conn:
+    await conn.run_sync(Base.metadata.create_all)

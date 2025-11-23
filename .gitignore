@@ -1,0 +1,4 @@
+.env
+src/rasa/models
+src/rasa/.*
+docs

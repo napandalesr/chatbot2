@@ -1,0 +1,39 @@
+version: "3.1"
+
+nlu:
+  - intent: preguntar_universidad
+    examples: |
+      - ¿En qué universidad estudiaste?
+      - ¿Dónde te formaste?
+      - ¿En qué institución estudiaste?
+      - ¿Qué universidad cursaste?
+      - ¿Dónde te graduaste?
+      - ¿En qué alma máter estudiaste?
+      - ¿Qué institución educativa atendiste?
+      - ¿Dónde realizaste tus estudios?
+      - ¿En qué centro de estudios estuviste?
+      - ¿Qué universidad te otorgó el título?
+      - ¿Dónde obtuviste tu formación?
+      - ¿En qué facultad estudiaste?
+      - ¿Qué institución te formó?
+      - ¿Dónde cursaste la carrera?
+      - ¿En qué plantel estudiaste?
+
+
+  - intent: preguntar_educacion_general
+    examples: |
+      - ¿Qué estudios tienes?
+      - ¿Cuál es tu formación académica?
+      - ¿Dónde estudiaste?
+      - ¿Qué carrera tienes?
+      - ¿Cuál es tu educación?
+      - ¿Tienes estudios universitarios?
+      - ¿Qué títulos tienes?
+      - ¿Cuál es tu grado académico?
+
+  - intent: preguntar_educacion_especifica
+    examples: |
+      - ¿Estudiaste en [Universidad del Pacífico](institucion)?
+      - ¿Qué estudiaste en [Universidad del Pacífico](institucion)?
+      - Cuéntame de [Universidad del Pacífico](institucion)
+      - ¿En [Universidad del Pacífico](institucion) qué carrera hiciste?
