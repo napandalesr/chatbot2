@@ -1,12 +1,16 @@
 #actions educacion
 from .action_educacion.action_educacion_general import ActionEducacionGeneral
+from .action_educacion.action_cursos_extracurriculares import ActionCursosExtracurriculares
 from .action_educacion.action_educacion_especifica import ActionEducacionEspecifica
 #actions tecnologia
 from .action_tenologia.action_tecnologia_general import ActionTecnologiaGeneral
 from .action_tenologia.action_tecnologia_especifica import ActionTecnologiaEspecifica
 #actions experiencia
+from .actions_experiencia.action_experiencia_actual import ActionExperienciaActual
 from .actions_experiencia.action_experiencia_general import ActionExperienciaGeneral
 from .actions_experiencia.action_experiencia_especifica import ActionExperienciaEspecifica
+from .actions_experiencia.action_tiempo_experiencia_total import ActionTiempoExperienciaTotal
+from .actions_experiencia.action_experiencia_tecnologia import ActionExperienciaTecnologia
 #actions general
 from .actions_general.action_saludar import ActionSaludo
 from .actions_general.action_saludo_extendido import ActionSaludoExtendido
@@ -24,12 +28,16 @@ __all__ = [
   #actions educacion
   "ActionEducacionGeneral",
   "ActionEducacionEspecifica",
+  "ActionCursosExtracurriculares",
   #actions tecnologia
   "ActionTecnologiaGeneral",
   "ActionTecnologiaEspecifica",
   #actions experiencia
+  "ActionExperienciaActual",
   "ActionExperienciaGeneral",
   "ActionExperienciaEspecifica",
+  "ActionTiempoExperienciaTotal",
+  "ActionExperienciaTecnologia",
   #actions general
   "ActionSaludo",
   "ActionSaludoExtendido",

@@ -13,7 +13,7 @@ nlu:
       - REACT
       - reactjs
 
-  - synonym: next.js
+  - synonym: nextjs
     examples: |
       - Next.js
       - Next

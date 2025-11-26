@@ -66,10 +66,16 @@ class ActionClassifySpacy(Action):
 
     async def _manejar_palabra_suelta_no_encontrada(self, dispatcher: CollectingDispatcher, user_message: str) -> List[Dict[Text, Any]]:
         """Maneja palabras sueltas que no se encontraron en las bases de conocimiento"""
+        
+        # Extraer nombres de idiomas de la estructura real
+        nombres_idiomas = []
+        if "idiomas" in IDIOMAS and isinstance(IDIOMAS["idiomas"], list):
+            nombres_idiomas = [idioma["nombre"] for idioma in IDIOMAS["idiomas"]]
+        
         sugerencias = {
             "tecnologias": ["react", "node.js", "typescript", "docker", "next.js"],
             "empresas": ["indra", "praxis", "ol software", "marabunta"],
-            "idiomas": ["inglés", "español"]
+            "idiomas": nombres_idiomas if nombres_idiomas else ["inglés", "español"]
         }
         
         respuesta = (
@@ -197,29 +203,31 @@ class ActionClassifySpacy(Action):
         
         return None
 
+
     def _buscar_en_idiomas(self, mensaje: str) -> str:
-        """Búsqueda en idiomas desde el mensaje original"""
+        """Búsqueda en idiomas desde el mensaje original - CORREGIDO"""
         mensaje_lower = mensaje.lower()
         
-        # Buscar por clave de idioma en el mensaje
-        for idioma_key in IDIOMAS.keys():
-            # Buscar la clave y sus variantes
-            idioma_variants = [
-                idioma_key,
-                idioma_key.replace('_', ' '),
-                idioma_key.replace('_', '')
-            ]
-            
-            for variant in idioma_variants:
-                if variant in mensaje_lower:
-                    print(f"✅ [DEBUG] Encontrado idioma por clave: {idioma_key}")
-                    return idioma_key
-        
-        # Buscar por display name en el mensaje
-        for idioma_key, idioma_info in IDIOMAS.items():
-            display_name = idioma_info["display_name"].lower()
-            if display_name in mensaje_lower:
-                print(f"✅ [DEBUG] Encontrado idioma por display name: {idioma_key} -> {display_name}")
-                return idioma_key
+        # IDIOMAS es un diccionario con clave "idiomas" que contiene una lista
+        if "idiomas" in IDIOMAS and isinstance(IDIOMAS["idiomas"], list):
+            for idioma_info in IDIOMAS["idiomas"]:
+                # Buscar por nombre del idioma
+                nombre_idioma = idioma_info.get("nombre", "").lower()
+                if nombre_idioma and nombre_idioma in mensaje_lower:
+                    print(f"✅ [DEBUG] Encontrado idioma por nombre: {nombre_idioma}")
+                    return nombre_idioma
+                
+                # También buscar variantes comunes
+                variantes = {
+                    "inglés": ["ingles", "english", "inglés"],
+                    "español": ["espanol", "spanish", "español", "castellano"]
+                }
+                
+                for idioma_base, variantes_lista in variantes.items():
+                    if nombre_idioma.lower() == idioma_base:
+                        for variante in variantes_lista:
+                            if variante in mensaje_lower:
+                                print(f"✅ [DEBUG] Encontrado idioma por variante: {nombre_idioma} -> {variante}")
+                                return nombre_idioma
         
         return None

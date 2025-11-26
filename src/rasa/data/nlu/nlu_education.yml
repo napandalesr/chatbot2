@@ -1,6 +1,30 @@
 version: "3.1"
 
 nlu:
+  - intent: preguntar_cursos_extracurriculares
+    examples: |
+      - ¿Has tomado cursos adicionales?
+      - ¿Qué cursos extracurriculares has hecho?
+      - ¿Qué cursos adicionales tienes?
+      - ¿Has hecho cursos fuera de la universidad?
+      - ¿Qué formación complementaria tienes?
+      - ¿Has tomado cursos de capacitación?
+      - ¿Has hecho cursos extras?
+      - ¿Tienes cursos adicionales a tu carrera?
+      - ¿Has realizado formación extracurricular?
+      - ¿Qué cursos has tomado aparte de tu formación?
+      - ¿Has hecho capacitaciones adicionales?
+      - ¿Tienes cursos de actualización?
+      - ¿Qué formación continua tienes?
+      - ¿Has tomado cursos online?
+      - ¿Has hecho cursos cortos?
+      - ¿Qué certificaciones adicionales tienes?
+      - ¿Has realizado cursos de perfeccionamiento?
+      - ¿Has realizado formación fuera del ámbito académico?
+      - ¿Qué cursos has tomado por tu cuenta?
+      - ¿Has hecho formación autodidacta?
+      - ¿Qué cursos adicionales a tu profesión tienes?
+
   - intent: preguntar_universidad
     examples: |
       - ¿En qué universidad estudiaste?
@@ -17,6 +41,36 @@ nlu:
       - ¿En qué facultad estudiaste?
       - ¿Qué institución te formó?
       - ¿Dónde cursaste la carrera?
+      - ¿Cuál es tu formación académica?
+      - ¿Qué estudios tienes?
+      - ¿Cuál es tu background educativo?
+      - ¿Qué títulos posees?
+      - ¿Qué has estudiado?
+      - ¿Cuál es tu educación formal?
+      - Háblame de tu formación
+      - ¿Qué carrera estudiaste?
+      - ¿Cuál es tu profesión?
+      - ¿Qué estudios universitarios tienes?
+      - ¿Eres profesional?
+      - ¿Tienes título universitario?
+      - ¿Qué grado académico tienes?
+      - ¿Cuál es tu nivel de estudios?
+      - ¿Qué educación recibiste?
+      - ¿Qué carrera estudiaste?
+      - ¿De qué te graduaste?
+      - ¿Cuál es tu profesión?
+      - ¿Qué título universitario tienes?
+      - ¿Qué estudiaste en la universidad?
+      - ¿Cuál fue tu carrera?
+      - ¿De qué eres profesional?
+      - ¿Qué licenciatura tienes?
+      - ¿Qué ingeniería estudiaste?
+      - ¿En qué te especializaste académicamente?
+      - ¿Cuál es tu título profesional?
+      - ¿Qué diploma universitario posees?
+      - ¿Qué facultad cursaste?
+      - ¿Qué programa estudiaste?
+      - ¿De qué área eres profesional?
       - ¿En qué plantel estudiaste?
 
 
@@ -37,3 +91,4 @@ nlu:
       - ¿Qué estudiaste en [Universidad del Pacífico](institucion)?
       - Cuéntame de [Universidad del Pacífico](institucion)
       - ¿En [Universidad del Pacífico](institucion) qué carrera hiciste?
+      - ¿Qué titulos tienes?

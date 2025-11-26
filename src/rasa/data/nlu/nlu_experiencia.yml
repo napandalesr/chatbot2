@@ -15,7 +15,6 @@ nlu:
       - ¿Qué experiencia tienes?
       - ¿En qué empresas has trabajado?
       - Cuéntame de tu carrera
-      - ¿Cuántos años de experiencia tienes?
       - ¿Qué puestos has tenido?
       - ¿Podrías contarme sobre tu experiencia laboral?
       - ¿Cuál es tu historial laboral?
@@ -47,3 +46,71 @@ nlu:
       - experiencia en [Ol Software](empresa)
       - ¿Qué aprendiste en [Marabunta](empresa)?
       - tu cargo en [MG Group](empresa)
+
+# --- EXPERIENCIA ACTUAL ---
+  - intent: preguntar_experiencia_actual
+    examples: |
+      - ¿Dónde trabajas actualmente?
+      - ¿En qué empresa estás ahora?
+      - ¿Cuál es tu trabajo actual?
+      - ¿Dónde te desempeñas hoy?
+      - trabajo actual
+      - empresa actual
+      - ¿En qué compañía trabajas?
+      - ¿Qué haces actualmente?
+      - tu empleo actual
+      - ¿Dónde estás laborando?
+      - puesto actual
+      - ¿En qué estás trabajando ahora?
+      - situación laboral actual
+
+# --- TIEMPO Y DURACIÓN ---
+  - intent: preguntar_tiempo_experiencia
+    examples: |
+      - ¿Cuántos años de experiencia tienes en total?
+      - ¿Cuántos años de experiencia tienes?
+      - ¿Cuánto tiempo llevas trabajando?
+      - ¿Cuántos años en el sector tech?
+      - ¿Cuánto tiempo estuviste en cada empresa?
+      - ¿Cuál fue tu trabajo más largo?
+      - duración de tu experiencia laboral
+      - años totales de carrera
+      - ¿Cuánto tiempo en desarrollo de software?
+      - experiencia total en años
+      - ¿Cuántos años como ingeniero?
+      - tiempo total trabajando
+      - ¿Desde cuándo trabajas?
+      - ¿Cuánta experiencia acumulada tienes?
+
+  - intent: preguntar_experiencia_tecnologia
+    examples: |
+      - ¿Cuántos años de experiencia tienes con [react](tecnologia)?
+      - ¿Cuántos años de experiencia tienes en [react](tecnologia)?
+      - ¿Cuánto tiempo llevas usando [javascript](tecnologia)?
+      - ¿Qué experiencia tienes con [python](tecnologia)?
+      - ¿Cuántos años trabajando con [node.js](tecnologia)?
+      - ¿Cuánto tiempo has usado [typescript](tecnologia)?
+      - años de experiencia en [angular](tecnologia)
+      - tiempo con [docker](tecnologia)
+      - experiencia con [nestjs](tecnologia)
+      - ¿Cuánto llevas programando en [java](tecnologia)?
+      - ¿Cuántos años has trabajado con [mysql](tecnologia)?
+      - duración usando [postgresql](tecnologia)
+      - ¿Cuánta experiencia tienes en [react native](tecnologia)?
+      - tiempo de experiencia con [next.js](tecnologia)
+      - años usando [tailwind](tecnologia)
+      - ¿Cuánto tiempo manejando [spring boot](tecnologia)?
+      - ¿Cuántos años con [firebase](tecnologia)?
+      - tiempo utilizando [oracle](tecnologia)
+      - ¿Cuánto llevas con [jest](tecnologia)?
+      - experiencia usando [ant design](tecnologia)
+      - ¿Cuánto tiempo has trabajado con [vtex](tecnologia)?
+      - experiencia en [.net](tecnologia)
+      - ¿Cuántos años has usado [strapi](tecnologia)?
+      - ¿Cuántos años llevas programando en [react]?
+      - ¿Qué tan experimentado eres con [javascript]?
+      - Dime tu experiencia con [typescript]
+      - ¿Cuántos años usando [python]?
+      - Tiempo total con [angular]
+      - Años de práctica con [java]
+      - ¿Cuánto llevas desarrollando en [react native]?

@@ -61,6 +61,10 @@ actions:
   - action_idioma_especifico
   - action_educacion_general
   - action_educacion_especifica
+  - action_cursos_extracurriculares
+  - action_experiencia_actual
+  - action_tiempo_experiencia_total
+  - action_experiencia_tecnologia
 
 responses:
   utter_despedir:

@@ -10,3 +10,8 @@ rules:
     steps:
     - intent: preguntar_educacion_especifica
     - action: action_educacion_especifica
+
+  - rule: Preguntar educacion especifica
+    steps:
+    - intent: preguntar_cursos_extracurriculares
+    - action: action_cursos_extracurriculares

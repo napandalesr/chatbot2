@@ -10,3 +10,18 @@ rules:
     steps:
     - intent: preguntar_experiencia_empresa_especifica
     - action: action_experiencia_especifica
+
+  - rule: Preguntar experiencia laboral actual
+    steps:
+    - intent: preguntar_experiencia_actual
+    - action: action_experiencia_actual
+
+  - rule: Tiempo total de experiencia
+    steps:
+    - intent: preguntar_tiempo_experiencia
+    - action: action_tiempo_experiencia_total
+
+  - rule: Experiencia tecnológica
+    steps:
+    - intent: preguntar_experiencia_tecnologia
+    - action: action_experiencia_tecnologia
