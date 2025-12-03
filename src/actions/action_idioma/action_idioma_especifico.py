@@ -26,15 +26,13 @@ class ActionIdiomaEspecifico(Action):
             return self._respuesta_idioma_no_encontrado(dispatcher, idioma)
         
         # Construir los elementos del mensaje
-        introducciones, lines, footer = self._construir_elementos_respuesta_especifica(idioma_info)
+        introducciones, lines = self._construir_elementos_respuesta_especifica(idioma_info)
         
         # Enviar mensaje con formato JSON
         dispatcher.utter_message(
             json_message={
                 "text": random.choice(introducciones),
-                "title": f"**{ICONOS_CONTENIDO.get('idioma', '🌍')} {idioma_info['nombre'].upper()}**",
                 "list": lines,
-                "footer": footer
             }
         )
         
@@ -62,15 +60,13 @@ class ActionIdiomaEspecifico(Action):
             ]
         else:
             introducciones = [
-                f"Tengo conocimientos de {info['nombre']} (nivel {nivel}):",
-                f"Manejo {info['nombre']} con competencia {nivel}:",
-                f"Estas son mis habilidades en {info['nombre']} (nivel {nivel}):"
+                f"Tengo conocimientos de {info['nombre']} -> **{nivel}**:",
+                f"Manejo {info['nombre']} con competencia -> **{nivel}**:",
+                f"Estas son mis habilidades en {info['nombre']} -> **{nivel}**:",
             ]
         
         # Líneas de información
-        lines = [
-            f"**Nivel:** {nivel}"
-        ]
+        lines = []
         
         # Contexto de uso
         if 'contexto_uso' in info and info['contexto_uso']:
@@ -110,9 +106,7 @@ class ActionIdiomaEspecifico(Action):
                 "Tengo conocimientos fundamentales para contextos simples"
             ]
         
-        footer = f"{random.choice(frases_footer)}\n ¿Te interesa conocer sobre otro idioma?"
-        
-        return introducciones, lines, footer
+        return introducciones, lines
     
     def _respuesta_idioma_no_encontrado(self, dispatcher: CollectingDispatcher, idioma: str) -> List[Dict[Text, Any]]:
         """Responde cuando no se encuentra el idioma en la base de conocimiento"""

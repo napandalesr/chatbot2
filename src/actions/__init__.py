@@ -9,8 +9,10 @@ from .action_tenologia.action_tecnologia_especifica import ActionTecnologiaEspec
 from .actions_experiencia.action_experiencia_actual import ActionExperienciaActual
 from .actions_experiencia.action_experiencia_general import ActionExperienciaGeneral
 from .actions_experiencia.action_experiencia_especifica import ActionExperienciaEspecifica
-from .actions_experiencia.action_tiempo_experiencia_total import ActionTiempoExperienciaTotal
 from .actions_experiencia.action_experiencia_tecnologia import ActionExperienciaTecnologia
+from .actions_experiencia.action_logros_empresa_especifica import ActionLogrosEmpresaEspecifica
+from .actions_experiencia.action_tecnologias_empresa_especifica import ActionTecnologiasEmpresaEspecifica
+from .actions_experiencia.action_tiempo_experiencia_total import ActionTiempoExperienciaTotal
 #actions general
 from .actions_general.action_saludar import ActionSaludo
 from .actions_general.action_saludo_extendido import ActionSaludoExtendido
@@ -38,6 +40,8 @@ __all__ = [
   "ActionExperienciaEspecifica",
   "ActionTiempoExperienciaTotal",
   "ActionExperienciaTecnologia",
+  "ActionLogrosEmpresaEspecifica",
+  "ActionTecnologiasEmpresaEspecifica",
   #actions general
   "ActionSaludo",
   "ActionSaludoExtendido",

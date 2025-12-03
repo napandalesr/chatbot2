@@ -14,7 +14,7 @@ class ActionTecnologiaGeneral(Action):
     introducciones = [
       f"¡Te doy la bienvenida a mi panorama tecnológico completo! {ICONOS_CONTENIDO['proyecto']}",
       f"Con gusto! Te presento mi stack tecnológico general {ICONOS_CONTENIDO['computador']}",
-      f"¡Excelente! Permíteme mostrarte mis habilidades tecnológicas organizadas por categorías {ICONOS_CONTENIDO['tecnologia']}"
+      f"¡Excelente! Permíteme mostrarte mis habilidades tecnológicas {ICONOS_CONTENIDO['tecnologia']}"
     ]
 
     introduction = random.choice(introducciones)

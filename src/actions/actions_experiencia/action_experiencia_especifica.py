@@ -5,7 +5,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 import random
 
-# Importar base de conocimiento desde data.py
 from ..data import EMPRESAS
 from ..constants import ICONOS_CONTENIDO
 
@@ -42,57 +41,58 @@ class ActionExperienciaEspecifica(Action):
             return [SlotSet("empresa", None)]
         
         # Construir los elementos del mensaje
-        introducciones, lines, footer = self._construir_elementos_respuesta(empresa_info, empresa_normalizada)
+        introducciones, lines = self._construir_elementos_respuesta(empresa_info, empresa_normalizada)
         
         # Enviar mensaje con formato JSON
         dispatcher.utter_message(
             json_message={
                 "text": random.choice(introducciones),
-                "title": f"**{ICONOS_CONTENIDO.get('programador', '💼')} EXPERIENCIA EN {empresa_info['display_name'].upper()}**",
-                "list": lines,
-                "footer": footer
+                "footer": lines['text'],
             }
         )
         
-        return [SlotSet("empresa", empresa_normalizada)]
+        return [SlotSet("empresa", empresa_normalizada),SlotSet("tema_sugerido", lines['tema'])]
     
     def _construir_elementos_respuesta(self, info: Dict, empresa_key: str) -> tuple:
         """Construye los elementos para la respuesta estructurada"""
         
         # Introducciones aleatorias
         introducciones = [
-            f"Durante mi tiempo en {info['display_name']} tuve la oportunidad de:",
-            f"Mi experiencia en {info['display_name']} incluyó:",
-            f"En {info['display_name']} me desempeñé como {info['cargo']} donde:",
-            f"Trabajé en {info['display_name']} desarrollando las siguientes actividades:"
-        ]
-        
-        # Líneas de información (list items)
-        lines = [
-            f"**Cargo:** {info['cargo']}",
-            f"**Duración:** {info['tiempo']} ({info['periodo']})",
-            f"**Descripción:** {info['descripcion']}"
+            f"Durante mi tiempo en {info['display_name']} tuve la oportunidad de colaborar como {info['cargo']} durante {info['tiempo']} ({info['periodo']})",
+            f"En mi experiencia en {info['display_name']} trabajé tuve el cargo de {info['cargo']} durante {info['tiempo']} ({info['periodo']})",
+            f"En {info['display_name']} me desempeñé como {info['cargo']} durante {info['tiempo']} ({info['periodo']})",
+            f"Trabajé en {info['display_name']} desarrollando las siguientes actividades: {info['cargo']} durante {info['tiempo']} ({info['periodo']})"
         ]
         
         # Tecnologías utilizadas
-        if 'tecnologias' in info and info['tecnologias']:
-            tecnologias_str = ", ".join(info['tecnologias'])
-            lines.append(f"**Tecnologías:** {tecnologias_str}")
+        #if 'tecnologias' in info and info['tecnologias']:
+        #    tecnologias_str = ", ".join(info['tecnologias'])
+        #    lines.append(f"**Tecnologías:** {tecnologias_str}")
         
         # Logros destacados
-        if 'logros' in info and info['logros']:
-            for logro in info['logros']:
-                lines.append(f"**Logro:** {logro}")
+        #if 'logros' in info and info['logros']:
+        #    for logro in info['logros']:
+        #        lines.append(f"**Logro:** {logro}")
         
         # Footer con frase motivacional
         frases = [
-            "Fue una experiencia muy enriquecedora donde pude aplicar y desarrollar mis habilidades",
-            "Este rol me permitió crecer profesionalmente y enfrentar nuevos desafíos",
-            "Valoro mucho la experiencia adquirida durante mi tiempo en esta empresa",
-            "Tuve la oportunidad de trabajar en proyectos interesantes y aprender continuamente",
-            "Esta experiencia fortaleció mis habilidades técnicas y de liderazgo"
+            {
+                "tema": "logros-empresa-especifica", 
+                "text": "Fue una experiencia muy enriquecedora donde pude aplicar y desarrollar mis habilidades, ¿Te gustaría conocer mis logros en esta empresa?"},
+            {
+                "tema": "proyectos-empresa-especifica", 
+                "text": "Este rol me permitió crecer profesionalmente y enfrentar nuevos desafíos, ¿Te gustaría conocer los proyectos en los que trabajé?"},
+            {
+                "tema": "tecnologias-empresa-especifica", 
+                "text": "Valoro mucho la experiencia adquirida durante mi tiempo en esta empresa, ¿Te puedo hacer una lista de las tecnologías que usé en esta empresa?"},
+            {
+                "tema": "proyectos-empresa-especifica", 
+                "text": "Tuve la oportunidad de trabajar en proyectos interesantes y aprender continuamente, ¿Te gustaría conocer los proyectos en los que trabajé?"},
+            {
+                "tema": "tecnologias-empresa-especifica", 
+                "text": "Esta experiencia fortaleció mis habilidades técnicas y de liderazgo, ¿Te puedo hacer una lista de las tecnologías que usé en esta empresa?"}
         ]
         
-        footer = f"{random.choice(frases)}\n ¿Te gustaría profundizar en alguna tecnología en particular?"
+        lines = random.choice(frases)
         
-        return introducciones, lines, footer
+        return introducciones, lines

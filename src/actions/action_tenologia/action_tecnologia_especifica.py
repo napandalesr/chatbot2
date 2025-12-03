@@ -24,6 +24,10 @@ class ActionTecnologiaEspecifica(Action):
             )
             return []
         
+        # Caso especial: "todas"
+        if tecnologia.lower() == "todas":
+            return [FollowupAction("action_tecnologia_general")]
+        
         # Normalizar el nombre de la tecnología
         tecnologia_normalizada = tecnologia.lower().replace(" ", "_").replace(".", "_")
         
@@ -38,22 +42,45 @@ class ActionTecnologiaEspecifica(Action):
                     tecnologia_normalizada = key
                     break
         
+        # SI NO SE ENCUENTRA LA TECNOLOGÍA (caso Python, Vue, etc.)
         if not tecnologia_info:
+            if tecnologia:
+                tecnologia_display = tecnologia.capitalize()
+            else:
+                tecnologia_display = "esta tecnología"
+            
+            respuestas = [
+                f"😅 No tengo experiencia profesional con **{tecnologia_display}** en mi historial laboral. **Tengo experiencia sólida con React/Next.js, Node.js/NestJS y otras tecnologías modernas**. ¿Te gustaría conocer mis habilidades en alguna de estas?",
+                f"🤔 **{tecnologia_display}** no forma parte de mi stack actual. **Sin embargo, domino React/Next.js para frontend y Node.js/NestJS para backend**. ¿Quieres que te cuente sobre alguna en particular?",
+            ]
+            
+            respuesta = random.choice(respuestas)
+            
             dispatcher.utter_message(
                 json_message={
-                    "text": f"Lo siento, no tengo información específica sobre {tecnologia}.",
+                    "text": respuesta,
+                    "buttons": [
+                        {"title": "👍 Sí, cuéntame sobre React", "payload": "/pregunta_tecnologia_especifica{\"tecnologia\":\"react\"}"},
+                        {"title": "🤝 Sí, cuéntame sobre Next.js", "payload": "/pregunta_tecnologia_especifica{\"tecnologia\":\"nextjs\"}"},
+                        {"title": "🚀 Sí, cuéntame sobre Node.js", "payload": "/pregunta_tecnologia_especifica{\"tecnologia\":\"node_js\"}"},
+                        {"title": "📊 Ver todas mis tecnologías", "payload": "/pregunta_tecnologia_general"}
+                    ]
                 }
             )
-            return [SlotSet("tecnologia", None)]
+            
+            # Establecer tema_sugerido para contexto futuro
+            return [
+                SlotSet("tema_sugerido", "tecnologias"),
+                SlotSet("tecnologia", None),
+                SlotSet("fallback_triggered", False)
+            ]
         
-        # Construir los elementos del mensaje
+        # SI SE ENCUENTRA LA TECNOLOGÍA
         introducciones, lines, footer = self._construir_elementos_respuesta(tecnologia_info, tecnologia_normalizada)
         
-        # Enviar mensaje con formato JSON
         dispatcher.utter_message(
             json_message={
                 "text": random.choice(introducciones),
-                "title": f"**{ICONOS_CONTENIDO.get('tecnologia', '💻')} {tecnologia_info['display_name'].upper()}**",
                 "list": lines,
                 "footer": footer
             }
@@ -63,37 +90,25 @@ class ActionTecnologiaEspecifica(Action):
     
     def _construir_elementos_respuesta(self, info: Dict, tech_key: str) -> tuple:
         """Construye los elementos para la respuesta estructurada"""
-        
-        # Introducciones aleatorias
         introducciones = [
-            f"Esta es mi experiencia con {info['display_name']}:",
-            f"Estos son mis conocimientos en {info['display_name']}:",
-            f"Tengo la siguiente experiencia en {info['display_name']}:",
-            f"Mis habilidades en {info['display_name']} incluyen:"
+            f"Esta es mi experiencia con {ICONOS_CONTENIDO.get('tecnologia', '💻')} **{info['display_name']}**:",
+            f"Estos son mis conocimientos en {ICONOS_CONTENIDO.get('tecnologia', '💻')} **{info['display_name']}**:",
         ]
         
-        # Líneas de información (list items)
         lines = [
             f"**Nivel:** {info['nivel']}",
             f"**Experiencia:** {info['experiencia']}",
-            f"**Categoría:** {info.get('categoria', 'No especificada').title()}"
         ]
         
-        # Años de experiencia (si existe)
         if 'años_experiencia' in info:
             lines.append(f"**Años de experiencia:** {info['años_experiencia']}")
         
-        # Detalles técnicos
         if 'detalles' in info:
             lines.append(f"**Habilidades específicas:** {info['detalles']}")
         
-        # Footer con frase motivacional
         frases = [
             "¡Estoy listo para aplicar estos conocimientos en nuevos desafíos!",
             "Me encanta trabajar con esta tecnología y seguir aprendiendo.",
-            "He acumulado experiencia sólida que me permite resolver problemas complejos.",
-            "Siempre busco optimizar y mejorar mis habilidades con esta tecnología.",
-            "Esta tecnología es una de mis especialidades y disfruto trabajando con ella."
         ]
         
         footer = f"{random.choice(frases)}\n ¿Te gustaría conocer mi experiencia con otra tecnología?"

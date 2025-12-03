@@ -34,7 +34,6 @@ class ActionSaludo(Action):
 
     respuesta_elegida = random.choice(respuestas + respuestas_tecnicas)
 
-    print("create_conversation 123")
     create_conversation(sender_id, latest_message['text'], respuesta_elegida)
 
     dispatcher.utter_message(

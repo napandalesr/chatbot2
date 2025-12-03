@@ -28,7 +28,12 @@ class ActionSeguirTema(Action):
       "experiencias": "action_experiencia_general",
       "tecnologias": "action_tecnologia_general",
       "perfil": "action_perfil_general",
+      "logros-empresa-especifica": "action_logros_empresa_especifica",
+      "proyectos-empresa-especifica": "action_proyectos_empresa_especifica",
+      "tecnologias-empresa-especifica": "action_tecnologias_empresa_especifica",
     }
+
+    print(f"🎯 [DEBUG] Acción sugerida: '{tema}'")
 
     accion = acciones.get(tema)
     if accion:

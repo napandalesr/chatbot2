@@ -22,14 +22,13 @@ class ActionExperienciaGeneral(Action):
     introduction = random.choice(introducciones)
     lines = []
         
-    # Ordenar empresas por periodo (simplificado - se asume orden correcto en el dict)
     for empresa_key, info in EMPRESAS.items():
-        nombre = info.get('display_name', empresa_key)
-        periodo = info.get('periodo', '')
-        cargo = info.get('cargo', '')
-        tiempo = info.get('tiempo', '')
-        
-        lines.append(f"**{nombre}**: {periodo} ({tiempo}) - {cargo}")
+      nombre = info.get('display_name', empresa_key)
+      periodo = info.get('periodo', '')
+      cargo = info.get('cargo', '')
+      tiempo = info.get('tiempo', '')
+      
+      lines.append(f"**{nombre}**: ({periodo}) -> {cargo}")
 
     dispatcher.utter_message(
       json_message = {

@@ -23,6 +23,8 @@ stories:
       entities:
       - empresa: "indra"
     - action: action_experiencia_especifica
+    - intent: afirmativo
+    - action: action_seguir_tema
     - intent: preguntar_habilidad_tecnologia_especifica
       entities:
       - tecnologia: "react"
@@ -53,6 +55,22 @@ stories:
     - action: action_educacion_general
     - intent: preguntar_educacion_especifica
     - action: action_educacion_especifica
+    - intent: agradecer
+    - action: utter_agradecer
+    - intent: despedir
+    - action: utter_despedir
+
+  - story: Preguntar Experiencia
+    steps:
+    - intent: saludar
+    - action: action_saludar
+    - action: action_sugerir_tema
+    - intent: preguntar_experiencia_general
+    - action: action_experiencia_general
+    - intent: preguntar_experiencia_especifica
+    - action: action_experiencia_especifica
+    - intent: afirmativo
+    - action: action_seguir_tema
     - intent: agradecer
     - action: utter_agradecer
     - intent: despedir

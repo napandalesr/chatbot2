@@ -1,0 +1,27 @@
+version: "3.1"
+
+nlu:
+- lookup: tecnologia
+  examples: |
+    react
+    reactjs
+    react js
+    react native
+    next
+    nextjs
+    next.js
+    node
+    nodejs
+    node.js
+    javascript
+    typescript
+    python
+    java
+    spring boot
+    nest
+    nestjs
+    docker
+    kubernetes
+    mysql
+    postgresql
+    mongo

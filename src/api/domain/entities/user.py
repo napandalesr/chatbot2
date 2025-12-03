@@ -12,4 +12,4 @@ class UserEntity(Base):
   name = Column(String, nullable=False)
   email = Column(String, unique=True, index=True)
   messages = relationship("MessageEntity", back_populates="user", cascade="all, delete-orphan")
-  timestamp = Column(DateTime, default=datetime.utcnow, nullable=False)
+  created_at = Column(DateTime, default=datetime.utcnow, nullable=False)

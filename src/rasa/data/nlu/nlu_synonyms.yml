@@ -285,8 +285,6 @@ nlu:
       - MG Group
       - MG-Group
       - mg group
-      - MG
-      - mg
 
   - synonym: freelance
     examples: |
@@ -440,3 +438,131 @@ nlu:
       - Universidad del Pacifico
       - universidad del pacífico
       - UNIPACÍFICO
+
+
+# --- TECNOLOGÍAS QUE NO ESTÁN EN MI STACK ---
+  - synonym: python_no_experience
+    examples: |
+      - Python
+      - python
+      - PYTHON
+      - Python 3
+      - Python3
+      - Django
+      - Flask
+      - FastAPI
+
+  - synonym: vue_no_experience
+    examples: |
+      - Vue
+      - Vue.js
+      - VueJS
+      - vue
+      - VUE
+      - Nuxt.js
+      - Nuxt
+
+  - synonym: php_no_experience
+    examples: |
+      - PHP
+      - php
+      - Php
+      - Laravel
+      - Symfony
+
+  - synonym: csharp_no_experience
+    examples: |
+      - C#
+      - C Sharp
+      - Csharp
+      - c#
+      - .NET Core
+      - ASP.NET
+
+  - synonym: ruby_no_experience
+    examples: |
+      - Ruby
+      - ruby
+      - RUBY
+      - Ruby on Rails
+      - Rails
+
+  - synonym: go_no_experience
+    examples: |
+      - Go
+      - Golang
+      - go
+      - GO
+      - Golang
+
+  - synonym: rust_no_experience
+    examples: |
+      - Rust
+      - rust
+      - RUST
+      - Rustlang
+
+  - synonym: kotlin_no_experience
+    examples: |
+      - Kotlin
+      - kotlin
+      - KOTLIN
+      - Android Kotlin
+
+  - synonym: swift_no_experience
+    examples: |
+      - Swift
+      - swift
+      - SWIFT
+      - iOS Swift
+
+  - synonym: cpp_no_experience
+    examples: |
+      - C++
+      - C plus plus
+      - Cpp
+      - c++
+      - CPP
+
+  - synonym: tecnologia_general
+    examples: |
+      - tecnología
+      - tecnologías
+      - tecnologia
+      - tecnologias
+      - tech
+      - stack
+      - herramientas
+      - lenguajes
+      - frameworks
+      - mi stack
+
+  - synonym: experiencia_general
+    examples: |
+      - experiencia
+      - experiencias
+      - trabajo
+      - trabajos
+      - empleo
+      - laboral
+      - profesional
+      - historial laboral
+
+  - synonym: educacion_general
+    examples: |
+      - educación
+      - educacion
+      - estudios
+      - formación
+      - formacion
+      - carrera
+      - académico
+      - académica
+
+  - synonym: idioma_general
+    examples: |
+      - idioma
+      - idiomas
+      - lenguaje
+      - lenguajes
+      - idiomas que hablo

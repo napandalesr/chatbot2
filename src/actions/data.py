@@ -7,7 +7,7 @@ EMPRESAS = {
     "cargo": "Desarrollador Full Stack",
     "descripcion": "Mis inicios en el desarrollo con proyectos para fundaciones, artistas, agencias turísticas y colegios",
     "tecnologias": ["react", "angular", "firebase", "java", "mysql", "postgresql", "javascript", "typescript"],
-    "logros": ["Proyectos para múltiples sectores", "Experiencia en diversos stacks tecnológicos"],
+    "funciones": ["Proyectos para múltiples sectores", "Experiencia en diversos stacks tecnológicos"],
   },
   "mg_group": {
     "display_name": "MG Group", 
@@ -16,7 +16,7 @@ EMPRESAS = {
     "cargo": "Desarrollador Frontend",
     "descripcion": "Empresa colombiana de información tecnológica, en donde participé en un proyecto para el ministerio de educación",
     "tecnologias": ["react", "sass", "ant_design", "javascript", "typescript"],
-    "logros": ["Desarrollo para Ministerio de Educación"]
+    "funciones": ["Desarrollo para Ministerio de Educación"]
   },
   "praxis": {
     "display_name": "Praxis",
@@ -25,7 +25,7 @@ EMPRESAS = {
     "cargo": "Ingeniero de Software",
     "descripcion": "Multinacional de información tecnológica con presencia en más de 10 países. Participé en proyectos de desarrollo para la Federación Nacional de Cafeteros: apps con regulación cafetera, app del café y fondo de estabilización del precio del café",
     "tecnologias": ["react", "sass", "ant_design", "spring_boot", "oracle", "react_native", "javascript", "typescript", "docker"],
-    "logros": ["Proyectos para Federación Nacional de Cafeteros", "Desarrollo de aplicaciones móviles"]
+    "funciones": ["Proyectos para Federación Nacional de Cafeteros", "Desarrollo de aplicaciones móviles"]
   },
   "indra_ingeniero": {
     "display_name": "Indra",
@@ -33,8 +33,24 @@ EMPRESAS = {
     "periodo": "Diciembre 2021 - Abril 2023",
     "cargo": "Ingeniero de Software", 
     "descripcion": "Multinacional líder en España y Latinoamérica. Trabajé en el equipo de mantenimiento del ecommerce de Tigo, además de trabajar con Ecopetrol y liderar un equipo de desarrollo en Terpel",
-    "tecnologias": ["next_js", "nestjs", "react", "sass", "tailwind", "jest", "azure_devops", "node_js", "vtex", "react_native", "jquery", "gulp", "webpack", "javascript", "typescript", "docker", "net"],
-    "logros": ["Mantenimiento ecommerce Tigo", "Trabajo con Ecopetrol"]
+    "tecnologias": ["next_js", "nestjs", "react", "sass", "tailwind", "jest", "azure_devops", "node_js", "vtex", "react_native", "jquery", "gulp", "webpack", "javascript", "typescript", "docker", ".net"],
+    "funciones": ["Mantenimiento ecommerce Tigo", "Trabajo con Ecopetrol"],
+    "logros": {
+      "titulo": "Optimización de Performance en Ecommerce Tigo",
+      "empresa_key": "indra",
+      "categoria": "Optimización Técnica",
+      "destacado": True,
+      "año": "2023",
+      "descripcion": "Identificación y resolución de cuellos de botella críticos que mejoraron significativamente la experiencia de usuario en el ecommerce",
+      "contexto": "Plataforma con problemas de performance que afectaban conversión y satisfacción de usuarios",
+      "tecnologias_involucradas": ["Next.js", "Redis", "Chrome DevTools", "Lighthouse"],
+      "metricas_impacto": [
+        "Mejora del 35% en tiempo de carga de páginas críticas",
+        "Reducción del 40% en tasa de rebote",
+        "Incremento del 28% en tasa de conversión",
+        "Optimización del 80% en uso de CPU del servidor"
+      ]
+    }
   },
   "indra_lider": {
     "display_name": "Indra",
@@ -42,8 +58,19 @@ EMPRESAS = {
     "periodo": "Mayo 2023 - Noviembre 2023",
     "cargo": "Lider técnico", 
     "descripcion": "Multinacional líder en España y Latinoamérica. Trabajé en el equipo de mantenimiento del ecommerce de Tigo, además de trabajar con Ecopetrol y liderar un equipo de desarrollo en Terpel",
-    "tecnologias": ["next_js", "nestjs", "react", "sass", "tailwind", "jest", "azure_devops", "node_js", "vtex", "react_native", "jquery", "gulp", "webpack", "javascript", "typescript", "docker", "net"],
-    "logros": ["Liderazgo de equipo en Terpel"]
+    "tecnologias": ["next_js", "nestjs", "react", "sass", "tailwind", "jest", "azure_devops", "node_js", "vtex", "react_native", "jquery", "gulp", "webpack", "javascript", "typescript", "docker", ".net"],
+    "funciones": ["Liderazgo de equipo en Terpel"],
+    "logros": {
+      "titulo": "Liderazgo de Equipo en Proyecto Terpel",
+      "descripcion": "Coordinación exitosa de un equipo de 4 desarrolladores para implementación de nuevas features críticas en el programa de lealtad de Terpel",
+      "contexto": "Proyecto de alto impacto con 2M+ usuarios y transacciones críticas en tiempo real",
+      "metricas_impacto": [
+        "Reducción del 60% en conflicts de merge mediante establecimiento de estándares",
+        "Mejora del 40% en velocidad de onboarding de nuevos desarrolladores",
+        "Incremento del 25% en predictibilidad de entregas",
+        "0 incidencias críticas en producción durante mi liderazgo"
+      ]
+    },
   },
   "marabunta": {
     "display_name": "Marabunta",
@@ -52,7 +79,21 @@ EMPRESAS = {
     "cargo": "Ingeniero de Software",
     "descripcion": "Agencia de publicidad dedicada a producción de eventos, estrategias y desarrollo a medida. Fui el desarrollador principal encargado de realizar webs llamativas y diseños para clientes como la Gobernación del Valle, Granja Solar Las Marías y fundaciones",
     "tecnologias": ["next_js", "nestjs", "react", "tailwind", "jest", "vps", "node_js", "webpack", "javascript", "typescript", "docker", "illustrator", "strapi", "ubuntu_server"],
-    "logros": ["Desarrollador principal", "Proyectos para Gobernación del Valle", "Cliente Granja Solar Las Marías"]
+    "funciones": ["Desarrollador principal", "Proyectos para Gobernación del Valle", "Cliente Granja Solar Las Marías"],
+    "logros": {
+      "titulo": "Desarrollo de Portal Ciudadano para Gobernación del Valle",
+      "categoria": "Desarrollo de Impacto Social",
+      "destacado": True,
+      "año": "2024",
+      "descripcion": "Desarrollo principal del portal ciudadano que mejoró el acceso a servicios públicos para 50k+ usuarios mensuales",
+      "tecnologias_involucradas": ["Next.js", "NestJS", "Tailwind", "PostgreSQL"],
+      "metricas_impacto": [
+        "Mejora del 40% en acceso a servicios públicos digitales",
+        "Satisfacción del cliente medida en 4.8/5.0",
+        "Reducción del 60% en cambios de último momento mediante comunicación efectiva",
+        "Proyecto entregado 2 semanas antes del plazo"
+      ]
+    }
   },
   "ol_software": {
     "display_name": "Ol Software",
@@ -61,7 +102,40 @@ EMPRESAS = {
     "cargo": "Ingeniero de Software", 
     "descripcion": "Empresa colombiana de información tecnológica. Realizo proyectos de desarrollo full stack y multiplataforma para Comfandi",
     "tecnologias": ["next_js", "nestjs", "react", "tailwind", "jest", "node_js", "react_native", "javascript", "typescript", "docker"],
-    "logros": ["Proyectos full stack para Comfandi", "Desarrollo multiplataforma"]
+    "funciones": ["Proyectos full stack para Comfandi", "Desarrollo multiplataforma"],
+    "logros": {
+      "titulo": "Desarrollo de Portal Web para la alianza entre prestadores de salud independientes con comfandi",
+      "año": "2025",
+      "descripcion": "Proyecto de desarrollo full stack para personal de la salud independiente realizen su solicitud y registro de horarios disponibles para la alianza entre prestadores de salud independientes con comfandi",
+      "tecnologias_involucradas": ["Next.js", "NestJS", "Tailwind", "PostgreSQL"],
+      "metricas_impacto": [
+        "Alta participación de prestadores de servicios de salud",
+        "Agilizar el aval de las eps a los prestadores de salud",
+        "Flexibilidad en el horario de atencion de los prestadores de servicios de salud",
+      ]
+    },
+    "proyectos": [
+      {
+        "titulo": "App mi comfandi",
+        "tecnologias": ["react_native", "expo", "nestjs" "javascript", "typescript", "docker"],
+        "descripcion": "Aplicación movil que ofrece todos los servicios de comfandi, desde hospedaje, ecommerce, historias clínicas, etc.."
+      }, 
+      {
+        "titulo": "App multiplataforma mi comfandi",
+        "tecnologias": ["react_native", "expo", "nextjs", "nestjs" "javascript", "typescript", "docker"],
+        "descripcion": "Aplicación que funciona en web y movil creada para migrar la app móvil mi comfandi"
+      },
+      {
+        "titulo": "Web Aprendizajes 4G",
+        "tecnologias": ["nextjs", "nestjs" "javascript", "typescript", "docker"],
+        "descripcion": "Aplicación web creada para evaluar estudiantes de instituciones educativas que tienen convenio con confamdi"
+      },
+      {
+        "titulo": "Web Prestadores de salud",
+        "tecnologias": ["nextjs", "nestjs" "javascript", "typescript", "docker"],
+        "descripcion": "Aplicación web creada para gestionar la solicitud y registro de horarios disponibles para los prestadores de servicios de salud"
+      }
+    ]
   }
 }
 
@@ -206,7 +280,7 @@ TECNOLOGIAS = {
     "experiencia": "2+ años",
     "nivel": "Avanzado",
     "proyectos": ["Marabunta", "Ol Software", "Indra"],
-    "detalles": "Utility-first, diseño responsive, custom components",
+    "detalles": "mobile-first, diseño responsive, custom components",
     "años_experiencia": 2,
     "categoria": "frontend",
     "subcategoria": "styling"
@@ -268,80 +342,6 @@ EDUCACION_INFORMAL = [
     "url_cerificado": "https://www.udemy.com/certificate/UC-f9a7aa43-07be-4b66-ae99-a6979522f261/"
   }
 ]
-
-LOGROS_DESTACADOS = {
-  "descripcion": "Logros profesionales más destacados a lo largo de la carrera",
-  "logros": [
-    {
-      "titulo": "Liderazgo de Equipo en Proyecto Terpel",
-      "empresa_key": "indra",
-      "categoria": "Liderazgo Técnico",
-      "destacado": True,
-      "año": "2023",
-      "descripcion": "Coordinación exitosa de un equipo de 4 desarrolladores para implementación de nuevas features críticas en el programa de lealtad de Terpel",
-      "contexto": "Proyecto de alto impacto con 2M+ usuarios y transacciones críticas en tiempo real",
-      "rol_responsabilidad": "Líder técnico y coordinador de equipo de desarrollo",
-      "tecnologias_involucradas": ["React", "Node.js", "Azure DevOps", "Docker"],
-      "metricas_impacto": [
-        "Reducción del 60% en conflicts de merge mediante establecimiento de estándares",
-        "Mejora del 40% en velocidad de onboarding de nuevos desarrolladores",
-        "Incremento del 25% en predictibilidad de entregas",
-        "0 incidencias críticas en producción durante mi liderazgo"
-      ]
-    },
-    {
-      "titulo": "Optimización de Performance en Ecommerce Tigo",
-      "empresa_key": "indra",
-      "categoria": "Optimización Técnica",
-      "destacado": True,
-      "año": "2023",
-      "descripcion": "Identificación y resolución de cuellos de botella críticos que mejoraron significativamente la experiencia de usuario en el ecommerce",
-      "contexto": "Plataforma con problemas de performance que afectaban conversión y satisfacción de usuarios",
-      "rol_responsabilidad": "Ingeniero de software especializado en performance",
-      "tecnologias_involucradas": ["Next.js", "Redis", "Chrome DevTools", "Lighthouse"],
-      "metricas_impacto": [
-        "Mejora del 35% en tiempo de carga de páginas críticas",
-        "Reducción del 40% en tasa de rebote",
-        "Incremento del 28% en tasa de conversión",
-        "Optimización del 80% en uso de CPU del servidor"
-      ]
-    },
-    {
-      "titulo": "Migración Exitosa de jQuery a React",
-      "empresa_key": "indra",
-      "categoria": "Migración Tecnológica",
-      "destacado": True,
-      "año": "2023",
-      "descripcion": "Liderazgo en migración completa de componentes legacy de jQuery a React sin afectar funcionalidad existente",
-      "contexto": "Necesidad de modernizar codebase legacy manteniendo estabilidad y performance",
-      "rol_responsabilidad": "Arquitecto técnico y desarrollador principal",
-      "tecnologias_involucradas": ["React", "jQuery", "Webpack", "Feature Flags"],
-      "metricas_impacto": [
-        "Migración completada 3 meses antes del plazo estimado",
-        "0 incidencias críticas reportadas por usuarios durante transición",
-        "Reducción del 70% en tiempo de mantenimiento de componentes migrados",
-        "Mejora del 35% en performance de componentes actualizados"
-      ]
-    },
-    {
-      "titulo": "Desarrollo de Portal Ciudadano para Gobernación del Valle",
-      "empresa_key": "marabunta",
-      "categoria": "Desarrollo de Impacto Social",
-      "destacado": True,
-      "año": "2024",
-      "descripcion": "Desarrollo principal del portal ciudadano que mejoró el acceso a servicios públicos para 50k+ usuarios mensuales",
-      "contexto": "Proyecto gubernamental con alto impacto social y visibilidad pública",
-      "rol_responsabilidad": "Desarrollador principal full-stack",
-      "tecnologias_involucradas": ["Next.js", "NestJS", "Tailwind", "PostgreSQL"],
-      "metricas_impacto": [
-        "Mejora del 40% en acceso a servicios públicos digitales",
-        "Satisfacción del cliente medida en 4.8/5.0",
-        "Reducción del 60% en cambios de último momento mediante comunicación efectiva",
-        "Proyecto entregado 2 semanas antes del plazo"
-      ]
-    },
-  ]
-}
 
 PROYECTOS_DESTACADOS = [
   {

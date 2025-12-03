@@ -8,6 +8,7 @@ intents:
   - saludar
   - como_estas
   - educacion
+  - palabra_suelta
 
 entities:
   - tecnologia
@@ -65,6 +66,8 @@ actions:
   - action_experiencia_actual
   - action_tiempo_experiencia_total
   - action_experiencia_tecnologia
+  - action_tecnologias_empresa_especifica
+  - action_logros_empresa_especifica
 
 responses:
   utter_despedir:

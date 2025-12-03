@@ -20,7 +20,7 @@ class ConversationController:
   router = APIRouter(prefix="/conversation", tags=["Conversations"])
     
   @staticmethod
-  @router.post("/")
+  @router.post("")
   async def create_conversation(msg: ConversationDto, db: AsyncSession = Depends(get_db)):
     user = await get_user_by_id(db, msg.id_user)
     payload = {
@@ -33,7 +33,6 @@ class ConversationController:
         "user_name": user.name
       }
     rasa_responses = await call_rasa(payload)
-    print(f"Response: {rasa_responses}")
 
     if rasa_responses and len(rasa_responses) > 0:
       chatbot_response = "\n\n".join(
@@ -51,12 +50,7 @@ class ConversationController:
     #db.add(new_message)
     #await db.commit()
     #await db.refresh(new_message)
-    return {
-      "id": "str(new_message.id)",
-      "received": msg.received,
-      "chatbot": chatbot_response,
-      "id_user": msg.id_user,
-    }
+    return rasa_responses
   
   @staticmethod
   @router.get("/stats")

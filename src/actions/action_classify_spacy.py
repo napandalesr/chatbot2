@@ -4,8 +4,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import FollowupAction, SlotSet
 import spacy
 from pathlib import Path
-import re
-import random
 
 # Importar bases de conocimiento
 from .data import TECNOLOGIAS, EMPRESAS, IDIOMAS
@@ -13,7 +11,6 @@ from .data import TECNOLOGIAS, EMPRESAS, IDIOMAS
 # Cargar modelo spaCy
 MODEL_PATH = Path(__file__).parent.parent / "nlp" / "model-best"
 nlp = spacy.load(MODEL_PATH)
-
 
 class ActionClassifySpacy(Action):
     def name(self) -> Text:
@@ -28,206 +25,206 @@ class ActionClassifySpacy(Action):
 
         user_message = tracker.latest_message.get("text", "").strip()
         intent_name = tracker.latest_message.get("intent", {}).get("name", "")
+        entities = tracker.latest_message.get("entities", [])
         
-        print(f"🔍 [DEBUG] ActionClassifySpacy - Intent: '{intent_name}', Mensaje: '{user_message}'")
-
         if not user_message:
-            dispatcher.utter_message(
-                json_message={
-                    "text": "No entendí tu mensaje.",
-                }
-            )
-            return []
+            dispatcher.utter_message(text="No entendí tu mensaje.")
+            return [SlotSet("fallback_triggered", True)]
 
-        # 1️⃣ Buscar en TECNOLOGIAS (búsqueda directa en el mensaje)
-        tecnologia = self._buscar_en_tecnologias(user_message)
+        mensaje_lower = user_message.lower().strip()
+        
+        # 0️⃣ Manejar "todas" según contexto previo
+        if mensaje_lower in ["todas", "todas las tecnologías", "todas las tecnologias"]:
+            tema_sugerido = tracker.get_slot("tema_sugerido")
+            
+            if tema_sugerido == "tecnologias":
+                return [
+                    SlotSet("fallback_triggered", False),
+                    SlotSet("tecnologia", "todas"),
+                    FollowupAction("action_tecnologia_general")
+                ]
+            else:
+                dispatcher.utter_message(
+                    json_message={
+                        "text": "¿A qué te refieres con 'todas'? ¿Todas las tecnologías, todas las experiencias laborales, o todos los idiomas?",
+                        "suggestions": [
+                            "Todas las tecnologías",
+                            "Todas las experiencias",
+                            "Todos los idiomas",
+                            "Toda mi educación"
+                        ]
+                    }
+                )
+                return [SlotSet("fallback_triggered", False)]
+        
+        # 1️⃣ Usar entidades extraídas por Rasa
+        tecnologia_entidad = self._obtener_entidad_tecnologia(entities)
+        if tecnologia_entidad:
+            return [
+                SlotSet("tecnologia", tecnologia_entidad),
+                SlotSet("fallback_triggered", False),
+                FollowupAction("action_tecnologia_especifica")
+            ]
+        
+        empresa_entidad = self._obtener_entidad_empresa(entities)
+        if empresa_entidad:
+            return [
+                SlotSet("empresa", empresa_entidad),
+                SlotSet("fallback_triggered", False),
+                FollowupAction("action_experiencia_especifica")
+            ]
+
+        idioma_entidad = self._obtener_entidad_idioma(entities)
+        if idioma_entidad:
+            return [
+                SlotSet("idioma", idioma_entidad),
+                SlotSet("fallback_triggered", False),
+                FollowupAction("action_idioma_especifico")
+            ]
+
+        # 2️⃣ Buscar en bases de conocimiento
+        tecnologia = self._buscar_en_tecnologias(mensaje_lower)
         if tecnologia:
-            print(f"✅ [DEBUG] Tecnología encontrada: {tecnologia}")
-            return [SlotSet("tecnologia", tecnologia), FollowupAction("action_tecnologia_especifica")]
-
-        # 2️⃣ Buscar en EMPRESAS
-        empresa = self._buscar_en_empresas(user_message)
+            return [
+                SlotSet("tecnologia", tecnologia),
+                SlotSet("fallback_triggered", False),
+                FollowupAction("action_tecnologia_especifica")
+            ]
+        
+        empresa = self._buscar_en_empresas(mensaje_lower)
         if empresa:
-            print(f"✅ [DEBUG] Empresa encontrada: {empresa}")
-            return [SlotSet("empresa", empresa), FollowupAction("action_experiencia_especifica")]
+            return [
+                SlotSet("empresa", empresa),
+                SlotSet("fallback_triggered", False),
+                FollowupAction("action_experiencia_especifica")
+            ]
 
-        # 3️⃣ Buscar en IDIOMAS
-        idioma = self._buscar_en_idiomas(user_message)
+        idioma = self._buscar_en_idiomas(mensaje_lower)
         if idioma:
-            print(f"✅ [DEBUG] Idioma encontrado: {idioma}")
-            return [SlotSet("idioma", idioma), FollowupAction("action_idioma_especifico")]
+            return [
+                SlotSet("idioma", idioma),
+                SlotSet("fallback_triggered", False),
+                FollowupAction("action_idioma_especifico")
+            ]
 
-        # 4️⃣ Si es palabra_suelta y no se encontró en bases, dar respuesta útil
-        if intent_name == "palabra_suelta":
-            return await self._manejar_palabra_suelta_no_encontrada(dispatcher, user_message)
+        # 3️⃣ Palabras generales desde sinónimos
+        categoria_general = self._obtener_categoria_general(entities)
+        if categoria_general:
+            return self._manejar_categoria_general(categoria_general)
 
-        # 5️⃣ Solo usar spaCy como último recurso
+        # 4️⃣ Último recurso: spaCy
         return await self._clasificar_con_spacy(dispatcher, user_message, intent_name)
 
-    async def _manejar_palabra_suelta_no_encontrada(self, dispatcher: CollectingDispatcher, user_message: str) -> List[Dict[Text, Any]]:
-        """Maneja palabras sueltas que no se encontraron en las bases de conocimiento"""
-        
-        # Extraer nombres de idiomas de la estructura real
-        nombres_idiomas = []
-        if "idiomas" in IDIOMAS and isinstance(IDIOMAS["idiomas"], list):
-            nombres_idiomas = [idioma["nombre"] for idioma in IDIOMAS["idiomas"]]
-        
-        sugerencias = {
-            "tecnologias": ["react", "node.js", "typescript", "docker", "next.js"],
-            "empresas": ["indra", "praxis", "ol software", "marabunta"],
-            "idiomas": nombres_idiomas if nombres_idiomas else ["inglés", "español"]
+    # =====================
+    # Métodos auxiliares
+    # =====================
+    def _obtener_entidad_tecnologia(self, entities: List[Dict]) -> str:
+        for entity in entities:
+            if entity.get("entity") == "tecnologia":
+                return entity.get("value", "").lower()
+        return None
+
+    def _obtener_entidad_empresa(self, entities: List[Dict]) -> str:
+        for entity in entities:
+            if entity.get("entity") == "empresa":
+                valor = entity.get("value", "").lower()
+                if valor in EMPRESAS:
+                    return valor
+                for emp_key, emp_info in EMPRESAS.items():
+                    if emp_info["display_name"].lower() == valor:
+                        return emp_key
+                return valor
+        return None
+
+    def _obtener_entidad_idioma(self, entities: List[Dict]) -> str:
+        for entity in entities:
+            if entity.get("entity") == "idioma":
+                return entity.get("value", "").lower()
+        return None
+
+    def _obtener_categoria_general(self, entities: List[Dict]) -> str:
+        """Obtiene categoría general desde entidades de sinónimos"""
+        categorias_map = {
+            "tecnologia_general": "tecnologias",
+            "experiencia_general": "experiencias",
+            "idioma_general": "idiomas",
+            "educacion_general": "educacion"
         }
         
-        respuesta = (
-            f"Veo que mencionas '{user_message}'. ¿Te refieres a alguna tecnología, empresa o idioma?\n\n"
-            f"💻 **Tecnologías**: {', '.join(sugerencias['tecnologias'])}\n"
-            f"🏢 **Empresas**: {', '.join(sugerencias['empresas'])}\n"
-            f"🌍 **Idiomas**: {', '.join(sugerencias['idiomas'])}"
-        )
+        for entity in entities:
+            valor = entity.get("value", "").lower()
+            for categoria_sinonimo, categoria in categorias_map.items():
+                if valor == categoria_sinonimo.replace("_", " "):
+                    return categoria
+        return None
+
+    def _buscar_en_tecnologias(self, mensaje: str) -> str:
+        for tech_key, tech_info in TECNOLOGIAS.items():
+            if tech_key == mensaje:
+                return tech_key
+            if tech_info["display_name"].lower() == mensaje:
+                return tech_key
+        return None
+
+    def _buscar_en_empresas(self, mensaje: str) -> str:
+        for emp_key, emp_info in EMPRESAS.items():
+            if emp_key == mensaje:
+                return emp_key
+            if emp_info["display_name"].lower() == mensaje:
+                return emp_key
+        return None
+
+    def _buscar_en_idiomas(self, mensaje: str) -> str:
+        if "idiomas" in IDIOMAS and isinstance(IDIOMAS["idiomas"], list):
+            for idioma_info in IDIOMAS["idiomas"]:
+                if idioma_info.get("nombre", "").lower() == mensaje:
+                    return idioma_info.get("nombre", "").lower()
+        return None
+
+    def _manejar_categoria_general(self, categoria: str) -> List[Dict[Text, Any]]:
+        """Maneja categorías generales identificadas"""
+        followup_map = {
+            "tecnologias": "action_tecnologia_general",
+            "experiencias": "action_experiencia_general",
+            "idiomas": "action_idioma_general",
+            "educacion": "action_educacion_general"
+        }
         
-        dispatcher.utter_message(
-            json_message={
-                "text": respuesta,
-            }
-        )
+        if categoria in followup_map:
+            return [
+                SlotSet("tema_sugerido", categoria),
+                SlotSet("fallback_triggered", False),
+                FollowupAction(followup_map[categoria])
+            ]
         return []
 
-    async def _clasificar_con_spacy(
-        self, dispatcher: CollectingDispatcher, user_message: str, intent_name: str
-    ) -> List[Dict[Text, Any]]:
-        """Clasificación general con spaCy"""
-        print("🔍 [DEBUG] Usando clasificación spaCy...")
-        
+    async def _clasificar_con_spacy(self, dispatcher, user_message: str, intent_name: str):
         doc = nlp(user_message)
         if "textcat" not in nlp.pipe_names:
-            dispatcher.utter_message(
-                json_message={
-                    "text": "No se a qué te refieres.",
-                }
-            )
-            return []
+            dispatcher.utter_message(text="No sé a qué te refieres.")
+            return [SlotSet("fallback_triggered", True)]
 
         scores = doc.cats
         label = max(scores, key=scores.get)
         confidence = scores[label]
 
-        print(f"🎯 [DEBUG] spaCy - Categoría: '{label}' (confianza: {confidence:.4f})")
-
         if confidence < 0.5:
-            label = "desconocido"
+            dispatcher.utter_message(text="No entiendo bien tu mensaje. ¿Podrías aclararlo?")
+            return [SlotSet("fallback_triggered", True)]
 
-        # Redireccionar según categoría detectada
-        if label == "tecnologia_especifica":
-            print("✅ [DEBUG] spaCy detectó tecnología específica")
-            return [FollowupAction("action_tecnologia_especifica")]
-        elif label == "tecnologia_general":
-            print("✅ [DEBUG] spaCy detectó tecnología general")
-            return [FollowupAction("action_tecnologia_general")]
-        elif label == "empresa_especifica":
-            print("✅ [DEBUG] spaCy detectó empresa específica")
-            return [FollowupAction("action_experiencia_especifica")]
-        elif label == "empresa_general":
-            print("✅ [DEBUG] spaCy detectó empresa general")
-            return [FollowupAction("action_experiencia_general")]
-        elif label == "idioma_especifico":
-            print("✅ [DEBUG] spaCy detectó idioma específico")
-            return [FollowupAction("action_idioma_especifico")]
-        elif label == "idioma_general":
-            print("✅ [DEBUG] spaCy detectó idioma general")
-            return [FollowupAction("action_idioma_general")]
-        else:
-            opciones_fallback = [
-                "No estoy seguro de qué te refieres. ¿Podrías ser más específico?",
-                "Hmm, no entiendo bien. ¿Podrías darme más detalles?",
-                "No logro identificar eso. ¿Puedes reformularlo o ser más claro?"
+        followup_actions = {
+            "tecnologia_especifica": "action_tecnologia_especifica",
+            "tecnologia_general": "action_tecnologia_general", 
+            "empresa_especifica": "action_experiencia_especifica",
+            "empresa_general": "action_experiencia_general",
+            "idioma_especifico": "action_idioma_especifico",
+            "idioma_general": "action_idioma_general"
+        }
+
+        if label in followup_actions:
+            return [
+                SlotSet("fallback_triggered", False),
+                FollowupAction(followup_actions[label])
             ]
-            dispatcher.utter_message(
-                json_message={
-                    "text": random.choice(opciones_fallback),
-                }
-            )
-
-        return []
-
-    def _buscar_en_tecnologias(self, mensaje: str) -> str:
-        """Búsqueda directa en tecnologías desde el mensaje original"""
-        mensaje_lower = mensaje.lower()
-        
-        # Buscar por clave de tecnología en el mensaje
-        for tech_key in TECNOLOGIAS.keys():
-            # Buscar la clave y sus variantes
-            tech_variants = [
-                tech_key,
-                tech_key.replace('_', ' '),
-                tech_key.replace('_', '')
-            ]
-            
-            for variant in tech_variants:
-                if variant in mensaje_lower:
-                    print(f"✅ [DEBUG] Encontrado por clave: {tech_key} (variante: {variant})")
-                    return tech_key
-        
-        # Buscar por display name en el mensaje
-        for tech_key, tech_info in TECNOLOGIAS.items():
-            display_name = tech_info["display_name"].lower()
-            if display_name in mensaje_lower:
-                print(f"✅ [DEBUG] Encontrado por display name: {tech_key} -> {display_name}")
-                return tech_key
-        
-        return None
-
-    def _buscar_en_empresas(self, mensaje: str) -> str:
-        """Búsqueda en empresas desde el mensaje original"""
-        mensaje_lower = mensaje.lower()
-        
-        # Buscar por clave de empresa en el mensaje
-        for emp_key in EMPRESAS.keys():
-            # Buscar la clave y sus variantes
-            emp_variants = [
-                emp_key,
-                emp_key.replace('_', ' '),
-                emp_key.replace('_', '')
-            ]
-            
-            for variant in emp_variants:
-                if variant in mensaje_lower:
-                    print(f"✅ [DEBUG] Encontrado empresa por clave: {emp_key}")
-                    return emp_key
-        
-        # Buscar por display name en el mensaje
-        for emp_key, emp_info in EMPRESAS.items():
-            display_name = emp_info["display_name"].lower()
-            if display_name in mensaje_lower:
-                print(f"✅ [DEBUG] Encontrado empresa por display name: {emp_key} -> {display_name}")
-                return emp_key
-        
-        return None
-
-
-    def _buscar_en_idiomas(self, mensaje: str) -> str:
-        """Búsqueda en idiomas desde el mensaje original - CORREGIDO"""
-        mensaje_lower = mensaje.lower()
-        
-        # IDIOMAS es un diccionario con clave "idiomas" que contiene una lista
-        if "idiomas" in IDIOMAS and isinstance(IDIOMAS["idiomas"], list):
-            for idioma_info in IDIOMAS["idiomas"]:
-                # Buscar por nombre del idioma
-                nombre_idioma = idioma_info.get("nombre", "").lower()
-                if nombre_idioma and nombre_idioma in mensaje_lower:
-                    print(f"✅ [DEBUG] Encontrado idioma por nombre: {nombre_idioma}")
-                    return nombre_idioma
-                
-                # También buscar variantes comunes
-                variantes = {
-                    "inglés": ["ingles", "english", "inglés"],
-                    "español": ["espanol", "spanish", "español", "castellano"]
-                }
-                
-                for idioma_base, variantes_lista in variantes.items():
-                    if nombre_idioma.lower() == idioma_base:
-                        for variante in variantes_lista:
-                            if variante in mensaje_lower:
-                                print(f"✅ [DEBUG] Encontrado idioma por variante: {nombre_idioma} -> {variante}")
-                                return nombre_idioma
-        
-        return None
+        dispatcher.utter_message(text="No logro identificar a qué te refieres.")
+        return [SlotSet("fallback_triggered", True)]

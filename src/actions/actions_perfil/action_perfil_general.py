@@ -11,22 +11,19 @@ class ActionPerfilGeneral(Action):
   
   async def run(self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
     titulares = [
-      f"¡Soy **Ingeniero de Sistemas Full-Stack** con 4+ años de experiencia 🚀",
+      f"¡Soy **Ingeniero de Sistemas Full-Stack** con 6+ años de experiencia 🚀",
       f"¡Soy **Desarrollador Full-Stack** especializado en tecnologías modernas 💻", 
       f"Soy **Ingeniero de Sistemas** con expertise en desarrollo web y móvil 🛠️"
     ]
         
     introduction = random.choice(titulares)
     introduction += "\n\n"
-    introduction += "Mi pasión es crear soluciones tecnológicas escalables y de alto impacto. "
     introduction += "Me especializo en el desarrollo de aplicaciones web y móviles usando las mejores prácticas y arquitecturas modernas."
 
     total_empresas = len(EMPRESAS)
     años_experiencia = 6  
     
-    
-    lines = [f"**• {años_experiencia}+ años** de experiencia profesional"]
-    lines.append(f"**• {total_empresas} empresas** desde startups hasta multinacionales")
+    lines = [f"**Tengo {años_experiencia}+ años** de experiencia profesional en **{total_empresas}** empresas desde startups hasta multinacionales"]
     lines.append("")
     
     # Fortalezas principales
@@ -34,9 +31,7 @@ class ActionPerfilGeneral(Action):
     fortalezas = [
       "Desarrollo Full-Stack con React, Node.js y TypeScript",
       "Arquitectura de software escalable y mantenible",
-      "Optimización de performance y experiencia de usuario", 
-      "Liderazgo técnico",
-      "Metodologías ágiles y DevOps"
+      "Optimización de performance y experiencia de usuario"
     ]
     for fortaleza in fortalezas:
       lines.append(f"  • {fortaleza}")
@@ -51,8 +46,8 @@ class ActionPerfilGeneral(Action):
     dispatcher.utter_message(
       json_message = {
         "text": introduction,
-        "title": "**📊 MI PERFIL**",
-        "list": lines
+        "list": lines,
+        "footer": "Te puedo brindar información general sobre mi experiencia o las tecnologías que uso ¿Qué prefieres?"
       }
     )
 

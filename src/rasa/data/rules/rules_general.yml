@@ -1,34 +1,49 @@
 version: "3.1"
 
 rules:
+
+  # ----------------------
+  # Saludos y conversación general
+  # ----------------------
   - rule: Saludo
     steps:
       - intent: saludar
       - action: action_saludar
       - action: action_sugerir_tema
 
-  - rule: extender saludo
+  - rule: Extender saludo
     steps:
       - intent: como_estas
       - action: action_saludo_extendido
       - action: action_sugerir_tema
 
-  - rule: continuar tema
+  - rule: Continuar tema
     steps:
       - intent: afirmativo
       - action: action_seguir_tema
 
-  - rule: despedir
+  - rule: Despedir
     steps:
       - intent: despedir
       - action: utter_despedir
 
-  - rule: agradecer
+  - rule: Agradecer
     steps:
       - intent: agradecer
       - action: utter_agradecer
 
-  - rule: palabra suelta
+  # ----------------------
+  # Palabra suelta → acción spacy
+  # ----------------------
+  - rule: Palabra suelta
     steps:
       - intent: palabra_suelta
+      - action: action_classify_spacy
+
+  # ----------------------
+  # Fallback de NLU → acción spacy
+  # ----------------------
+  - rule: Fallback inteligente
+    steps:
+      - intent: nlu_fallback
       - action: action_classify_spacy
